@@ -13,12 +13,12 @@ namespace MPCLoggerCmd
     {
         static void Main(string[] args)
         {
-            var filename = @"C:\Users\Lasse\Downloads\The.Flash.2014.S02E08.720p.HDTV.X264-DIMENSION.mkv"; // args[0];  //
+            var filename = args[0];
             Process process = new Process();
-            var programfiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-            var cccp = "Combined Community Codec Pack";
+            var programfiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            var cccp = "Combined Community Codec Pack 64bit";
             var mpc = "MPC";
-            var mpchc = Path.Combine(programfiles, cccp, mpc, "mpc-hc.exe");
+            var mpchc = Path.Combine(programfiles, cccp, mpc, "mpc-hc64.exe");
             process.StartInfo.FileName = mpchc;
             process.StartInfo.Arguments = "\""+filename+"\"";
             LogOpening(filename, "START");
@@ -51,7 +51,8 @@ namespace MPCLoggerCmd
         {
             try
             {
-                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                Console.WriteLine(appDataPath);
                 string dbPath = System.IO.Path.Combine(appDataPath, "Dropbox\\host.db");
                 var lines = System.IO.File.ReadAllLines(dbPath);
                 var dbBase64Text = Convert.FromBase64String(lines[1]);
