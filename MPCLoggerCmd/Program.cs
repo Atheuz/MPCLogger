@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -13,7 +9,7 @@ namespace MPCLoggerCmd
     {
         static void Main(string[] args)
         {
-            var filename = args[0];
+            var filename = args[0]; //@"C:\Users\grave\Downloads\[HorribleSubs] Re Zero kara Hajimeru Isekai Seikatsu - 12 [1080p].mkv";// 
             Process process = new Process();
             var programfiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var cccp = "Combined Community Codec Pack 64bit";
